@@ -12,7 +12,7 @@ importers:
         specifier: 5.0.0-beta.46
         version: 5.0.0-beta.46(eslint@9.19.0(jiti@1.21.7))(next@15.1.6(@babel/core@7.26.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
       '@prisma/client':
-        specifier: ^6.3.1
+        specifier: latest
         version: 6.3.1(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)
       jest:
         specifier: ^29.7.0
