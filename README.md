@@ -1,36 +1,171 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow - Modern Task Management Application
+
+A full-stack task management application built with Next.js 14, demonstrating modern web development practices and architectural patterns. This project serves as a technical demonstration of building scalable, performant web applications with React and TypeScript.
+
+## Technical Stack
+
+### Frontend
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with custom UI components
+- **State Management**: Server Components + React Server Actions
+- **Authentication**: Clerk
+- **Forms**: React Server Actions with Progressive Enhancement
+
+### Backend
+- **Database**: PostgreSQL with Prisma ORM on Supabase
+- **API**: Next.js Server Actions
+- **Authentication**: Clerk
+- **Caching**: Next.js Cache and Revalidation
+
+### Testing
+- **Framework**: Jest + React Testing Library
+- **Coverage**: Component, Integration, and Unit Tests
+- **Mocking**: Custom mocks for Clerk Auth and Next.js Router
+- **CI Integration**: Automated testing on pull requests
+
+## Key Features
+
+- **Modern Authentication**
+  - Secure user authentication with Clerk
+  - Protected routes and API endpoints
+  - Role-based access control
+
+- **Real-time Project Management**
+  - Create and manage projects
+  - Assign and track tasks
+  - Real-time status updates
+  - Team collaboration features
+
+- **Optimized Performance**
+  - Server-side rendering with Next.js
+  - Optimistic updates for better UX
+  - Efficient data fetching with Server Components
+  - Minimal client-side JavaScript
+
+- **Responsive Design**
+  - Mobile-first approach
+  - Tailwind CSS for styling
+  - Consistent UI components
+  - Smooth animations and transitions
+
+## Architecture
+
+The application follows a modern, scalable architecture:
+
+```
+app/
+├── actions/          # Server actions for data mutations
+├── components/       # Reusable UI components
+├── lib/             # Shared utilities and database access
+└── [everything else]/        # Next.js App Router pages
+
+__tests__/
+├── components/      # Component tests
+├── utils/          # Test utilities
+└── integration/    # Integration tests
+
+tests/
+└── mocks/          # Test mocks (Clerk, etc.)
+```
+
+### Design Patterns
+- Server Components for improved performance
+- Container/Presenter pattern for component organization
+- Repository pattern for database access
+- Progressive Enhancement for form submissions
+- Optimistic UI updates for better UX
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/taskflow.git
+cd taskflow
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Configure the following in `.env.local`:
+```
+DATABASE_URL="postgresql://..."
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_..."
+CLERK_SECRET_KEY="sk_..."
+```
 
-## Learn More
+5. Initialize the database:
+```bash
+pnpm prisma db push
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Start the development server:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Testing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The project includes a comprehensive test suite:
 
-## Deploy on Vercel
+```bash
+# Run all tests
+pnpm test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Run tests in watch mode
+pnpm test:watch
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Generate coverage report
+pnpm test:coverage
+```
+
+### Test Structure
+- **Component Tests**: Test individual React components in isolation
+- **Integration Tests**: Test component interactions and data flow
+- **Unit Tests**: Test utility functions and helpers
+- **Mock System**: Custom mocks for external dependencies
+
+### Testing Best Practices
+- Use React Testing Library's user-centric queries
+- Follow the "Arrange-Act-Assert" pattern
+- Mock external dependencies consistently
+- Test error states and edge cases
+- Maintain high test coverage
+
+## Development Practices
+
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Configured for Next.js and React best practices
+- **Prettier**: Consistent code formatting
+- **Testing**: Jest and React Testing Library setup
+
+## Performance Optimizations
+
+- Server Components to reduce client-side JavaScript
+- Optimized images with next/image
+- Efficient data fetching with Server Actions
+- Tailwind CSS for minimal CSS bundle size
+- Proper caching strategies
+
+## Security Features
+
+- Authentication with Clerk
+- CSRF protection
+- Input validation with Zod
+- Secure headers with Helmet
+- SQL injection prevention with Prisma
+
+## Deployment
+
+The application is configured for deployment on Vercel:
+
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables
+3. Deploy with `git push`
